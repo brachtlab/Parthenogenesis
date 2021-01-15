@@ -2,7 +2,7 @@
 import sys
 from sys import argv
 #./check_intervals.py <back-mapped synteny file> <mephisto hemizygous> <NKZ hemizygous>
-
+#note, just checks to see whether hemizygous regions fall within syntenic. The NKZ332 output will list whether the corresponding H. mephisto syntenic region has a hemizygous region. These are candidates for followup.
 synHandle=open('%s'%argv[1],'r')
 mepHandle=open('%s'%argv[2],'r')
 nkzHandle=open('%s'%argv[3],'r')
