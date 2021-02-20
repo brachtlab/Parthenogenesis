@@ -7,8 +7,8 @@ from sys import argv
 
 inHandle=open("halicephalobus_mephisto.PRJNA528747.WBPS15.annotations.gff3",'r')
 genomeHandle=open("mephisto_omega.fasta",'r')
-coordHandle=open('mephisto_omega_mv_no_indels_noheader.vcf_interval_coverage.txt_hemizygous_intervals.txt','r')
-outHandle=open('hemizgous_genes_overlapping_CDS_found.txt','w')
+coordHandle=open('%s'%argv[1],'r')
+outHandle=open('%s_genes_overlapping_CDS_found.txt'%argv[1],'w')
 geneCoordHandle=open('genes_hemizygous_coordinates.txt','w')
 noGeneHandle=open('hemizygous_no_genes.txt','w')
 contigDict={}
@@ -58,7 +58,7 @@ for line in inHandle:
 					start=i[0]
 					stop=i[1]
 					tr='%s_%s_%s'%(contig,start,stop)
-					if start<begin<stop or start<end<stop:#indicates an overlapping transcript
+					if start<begin<stop or start<end<stop or begin<start<end or begin<stop<end:#indicates an overlapping transcript
 						#print 'line is %s'%line.split()
 						#items=line.split()[8]
 						#print 'items are %s'%items
